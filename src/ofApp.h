@@ -39,18 +39,28 @@ class ofApp : public ofBaseApp{
     ofParameter <string> FPS;
     ofParameter <float> appFrameRate;
     
+    // PANEL 1 : DEBUG
     ofParameterGroup statsCV;
     ofParameter <int> nBlobs;
     ofParameter <int> nCubes;
     
+    ofParameterGroup viewControl;
+    ofParameter <bool> bShowContour;
+    
+    //--------- PANEL 2 : PARAMS    
     // OpenCV controls
+    ofParameterGroup actionControls;
+    ofParameter <bool> bLearnBackground;
+    
     ofParameterGroup cvControls;
     ofParameter <bool> bInvert;
     ofParameter <bool> bUseBackground;
-    ofParameter <bool> bLearnBackground;
     ofParameter <int> threshold;
+    ofParameter <int> minArea;
+    ofParameter <int> maxArea;
+    ofParameter <int> nBlobMax;
 
-    void drawContourFinder(int x, int y, int w, int h);
+    void drawContourFinder(float x, float y, float w, float h);
 
     
 };

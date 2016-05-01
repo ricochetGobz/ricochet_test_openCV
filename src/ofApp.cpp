@@ -36,6 +36,10 @@ void ofApp::setup(){
     statsCV.add( nBlobs.set("Blobs founds", 0) );
     statsCV.add( nCubes.set("Cubes founds", 0) );
     gui.addVariableLister(statsCV);
+    
+    viewControl.setName("Debugs");
+    viewControl.add(bShowContour.set("Show controls", true));
+    gui.addGroup(viewControl);
 
     
     //---------
@@ -61,10 +65,18 @@ void ofApp::setup(){
     //--- Colomn 4 : Stats
     gui.setWhichColumn(3);
     
+    gui.addVariableLister(statsCV);
+    
+    actionControls.setName("Actions");
+    actionControls.add(bLearnBackground.set("Update Bg", true));
+    gui.addGroup(actionControls);
+
     cvControls.setName("cv controls");
-    cvControls.add(bUseBackground.set("Use Bg comparator", true));
-    cvControls.add(bLearnBackground.set("Update Bg", true));
+    cvControls.add(bUseBackground.set("Bg comparator", true));
     cvControls.add(bInvert.set("invert", false));
+    cvControls.add(minArea.set("minArea", 20.0, 1.0, 1000.0));
+    cvControls.add(maxArea.set("maxArea", 680.0 * 480.0, 1.0, (680.0 * 480.0)));
+    cvControls.add(nBlobMax.set("nBlobMax", 10.0, 1.0, 100.0));
     cvControls.add(threshold.set("threshold", 29.0, 1.0, 255.0));
     gui.addGroup( cvControls );
     
@@ -108,7 +120,11 @@ void ofApp::update(){
         
         // find contours which are between the size of 20 pixels and 1/3 the w*h pixels.
         // also, find holes is set to true so we will get interior contours as well....
-        contourFinder.findContours(grayDiff, 20, (680*480), 10, true);	// find holes
+        contourFinder.findContours(grayDiff,
+                                   gui.getValueI("cv_controls:minArea"),
+                                   gui.getValueI("cv_controls:maxArea"),
+                                   gui.getValueI("cv_controls:nBlobMax"),
+                                   false);	// find holes
     }
     
 
@@ -120,38 +136,36 @@ void ofApp::draw(){
     
     switch(gui.getSelectedPanel()) {
         case 0:
-            drawContourFinder(10,70,680,480);
+            if(bShowContour) drawContourFinder(10.0, 70.0, 680.0, 480.0);
             break;
         case 1:
-            //TODO afficher le contourFinder
+            drawContourFinder(443.0, 247.0, 200.0, 150.0);
             break;
         default:
             break;
     }
-
-    
 }
 
 //--------------------------------------------------------------
-void ofApp::drawContourFinder(int x, int y, int w, int h) {
+void ofApp::drawContourFinder(float x, float y, float w, float h) {
     ofNoFill();
-    //ofDrawRectangle(x, y, w, h);
+    ofDrawRectangle(x, y, w, h);
     // we could draw the whole contour finder
     contourFinder.draw(x, y, w, h);
     
     // or, instead we can draw each blob individually from the blobs vector,
     // this is how to get access to them:
-    //    for (int i = 0; i < contourFinder.nBlobs; i++){
-    //        contourFinder.blobs[i].draw(x, y);
-    //
-    //        // draw over the centroid if the blob is a hole
-    //        ofSetColor(255);
-    //        if(contourFinder.blobs[i].hole){
-    //            ofDrawBitmapString("hole",
-    //                               contourFinder.blobs[i].boundingRect.getCenter().x + x,
-    //                               contourFinder.blobs[i].boundingRect.getCenter().y + y);
-    //        }
-    //    }
+//        for (int i = 0; i < contourFinder.nBlobs; i++){
+//            contourFinder.blobs[i].draw(x, y, w, h);
+//    
+//            // draw over the centroid if the blob is a hole
+//            ofSetColor(255);
+//            if(contourFinder.blobs[i].hole){
+//                ofDrawBitmapString("hole",
+//                                   contourFinder.blobs[i].boundingRect.getCenter().x + x,
+//                                   contourFinder.blobs[i].boundingRect.getCenter().y + y);
+//            }
+//        }
 
 }
 
