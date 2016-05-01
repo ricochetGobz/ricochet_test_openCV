@@ -1,0 +1,11 @@
+<cv_controls>
+    <invert>
+        <val_0>0</val_0>
+    </invert>
+    <threshold>
+        <val_0>36</val_0>
+    </threshold>
+</cv_controls>
+<difference_mode>
+    <val_0>0</val_0>
+</difference_mode>
