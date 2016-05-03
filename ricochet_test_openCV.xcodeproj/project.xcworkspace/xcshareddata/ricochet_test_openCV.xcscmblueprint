@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DADAFDAFBA8647DE6945E2D4993B2FE8CDE954E0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "311230CAB78E521A7FB11ECA42EEFA8819284098" : 0,
+    "DADAFDAFBA8647DE6945E2D4993B2FE8CDE954E0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0AD2F918-BDBC-4F70-9B07-8DFC6FFB12B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "311230CAB78E521A7FB11ECA42EEFA8819284098" : "..\/..\/addons\/ofxControlPanel",
+    "DADAFDAFBA8647DE6945E2D4993B2FE8CDE954E0" : "ricochet_test_openCV\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ricochet_test_openCV",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ricochet_test_openCV.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ofTheo\/ofxControlPanel.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "311230CAB78E521A7FB11ECA42EEFA8819284098"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ricochetGobz\/ricochet_test_openCV.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DADAFDAFBA8647DE6945E2D4993B2FE8CDE954E0"
+    }
+  ]
+}

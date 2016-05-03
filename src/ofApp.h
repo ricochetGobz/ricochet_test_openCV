@@ -4,6 +4,12 @@
 #include "ofxOpenCv.h"
 #include "ofxControlPanel.h"
 
+#define RES 1.33333
+#define WIDTH 800
+#define HEIGHT WIDTH/RES
+#define OC_WIDTH 200
+#define OC_HEIGHT OC_WIDTH/RES
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -30,9 +36,11 @@ class ofApp : public ofBaseApp{
         ofxCvGrayscaleImage 	grayImage;
         ofxCvGrayscaleImage 	grayBg;
         ofxCvGrayscaleImage 	grayDiff;
+        ofxCvGrayscaleImage     grayThreshNear;
+        ofxCvGrayscaleImage     grayThreshFar;
+        ofxCvGrayscaleImage     grayRender;
     
         ofxCvContourFinder 	contourFinder;
-    
     
     // GUI
     ofxControlPanel gui;
@@ -48,14 +56,26 @@ class ofApp : public ofBaseApp{
     ofParameter <bool> bShowContour;
     
     //--------- PANEL 2 : PARAMS    
-    // OpenCV controls
-    ofParameterGroup actionControls;
+    // OpenCV grayBackground
+    ofParameterGroup buttonControls;
+    ofParameter <bool> bPlay;
     ofParameter <bool> bLearnBackground;
     
-    ofParameterGroup cvControls;
-    ofParameter <bool> bInvert;
+    // OpenCV grayReworked
+    ofParameterGroup reworkControls;
     ofParameter <bool> bUseBackground;
-    ofParameter <int> threshold;
+    ofParameter <bool> bContrast;
+    ofParameter <bool> bBlur;
+    ofParameter <int> minRange;
+    ofParameter <int> maxRange;
+    ofParameter <float> brightness;
+    ofParameter <float> contrast;
+
+    
+    // OpenCV controls
+    ofParameterGroup resultControls;
+    ofParameter <int> nearThreshold;
+    ofParameter <int> farThreshold;
     ofParameter <int> minArea;
     ofParameter <int> maxArea;
     ofParameter <int> nBlobMax;
